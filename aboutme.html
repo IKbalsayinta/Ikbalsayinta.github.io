@@ -6,6 +6,45 @@
     <title>About Me</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .box {
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .box:hover {
+            background-color: #f0f0f0;
+            transform: scale(1.05);
+        }
+
+        .box img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+        }
+
+        .box h4 {
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        .icons {
+            width: 20px;
+            filter: invert(80%);
+        }
+
+        .icons:hover {
+            filter: invert(100%);
+        }
         .icons {
             width: 20px;
             filter: invert(80%);
@@ -86,6 +125,28 @@
                 Aarzel niet om me een bericht te sturen!
             </p>
 
+            <h4>Lessen</h4>
+    <hr />
+    <p>Hier zijn enkele van de lessen die ik volg en waar ik veel van heb geleerd.</p>
+
+    <div class="grid-container">
+        <div class="box">
+            <img src="img/js.png" alt="JavaScript" />
+            <h4>Java Script</h4>
+        </div>
+        <div class="box">
+            <img src="img/css-3.png" alt="CSS" />
+            <h4>CSS</h4>
+        </div>
+        <div class="box">
+            <img src="img/html.png" alt="HTML" />
+            <h4>HTML</h4>
+        </div>
+        <div class="box">
+            <img src="img/php.png" alt="PHP" />
+            <h4>PHP</h4>
+        </div>
+    </div>
 </main>
 
 </body>
