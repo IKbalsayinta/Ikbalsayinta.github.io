@@ -1,0 +1,325 @@
+body {
+  display: flex; /* Flexbox is een lay-out die elementen flexibel uitlijnt */
+  justify-content: center; /* Centreert elementen horizontaal */
+  align-items: center; /* Centreert elementen verticaal */
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #333 0%, #666 100%);
+  height: 100vh; /* Maakt de hoogte van de pagina 100% van het scherm */
+  margin: 0;
+  padding: 0;
+  color: #ddd;
+
+}
+
+.hl-tekst {
+  color: white;
+  text-align: center;
+}
+
+.container {
+  background-color: #333;
+  color: #fff;
+  border-radius: 15px; /* Maakt de hoeken rond */
+  padding: 30px; /* Voegt binnenruimte toe */
+  width: 400px; /* Breedte van de container */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Voegt schaduw toe */
+  text-align: center;
+}
+
+.button {
+  margin: 10px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #565656;
+  color: rgb(51, 51, 51);
+  padding: 8px 12px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 16px;
+  cursor: pointer; /* Verandert de muiscursor in een handje */
+  border: none;
+  box-shadow: 0px 3px rgba(0, 0, 0, 0.2);
+}
+
+.dices {
+  font-size: 32pt; /* Grootte van de tekst is 32 punt */
+  text-align: center;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.credits{
+  column-count: 5; /* Verdeel de tekst in 5 kolommen */
+  column-fill: balance; /* Zorgt voor een evenwichtige verdeling */
+}
+
+
+.do {
+  margin: 10px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #565656;
+  color: rgb(51, 51, 51);
+  padding: 8px 12px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 16px;
+  cursor: pointer; /* Verandert de muiscursor in een handje */
+  border: none;
+  box-shadow: 0px 3px rgba(0, 0, 0, 0.2);
+}
+
+.message-box {
+  background-color: #565656;
+  color: #fff;
+  border-radius: 15px;
+  padding: 8px;
+  width: 385px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+
+.reset {
+  margin: 10px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #565656;
+  color: rgb(51, 51, 51);
+  padding: 8px 12px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 16px;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0px 3px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.hg:hover {
+  color: rgb(31, 31, 31);
+  background-color: #464646 /* Achtergrondkleur verandert naar donkergrijs bij hover */
+}
+
+.hg:active{
+  box-shadow: 0 1px #565656;
+  transform: translateY(2px); /* Beweegt de knop naar beneden als je deze indrukt */
+}
+
+
+
+
+
+.lg:hover {
+  color: rgb(31, 31, 31);
+  background-color: #464646
+}
+
+.lg:active{
+  box-shadow: 0 1px #565656;
+  transform: translateY(2px); /* Beweegt de knop naar beneden als je deze indrukt */
+}
+
+
+
+
+
+.do:hover {
+  color: rgb(31, 31, 31);
+  background-color: #464646 /* Achtergrondkleur verandert naar donkergrijs bij hover */
+}
+
+.do:active{
+  box-shadow: 0 1px #565656;
+  transform: translateY(2px); /* Beweegt de knop naar beneden als je deze indrukt */
+}
+
+
+
+
+
+
+.reset:hover {
+  color: rgb(31, 31, 31);
+  background-color: #464646
+}
+
+.reset:active{
+  box-shadow: 0 1px #565656;
+  transform: translateY(2px); /* Beweegt de knop naar beneden als je deze indrukt */
+}
+
+.message-box:hover {
+  color: rgb(235, 235, 235);
+  background-color: #464646
+}
+
+img{
+  width:50px; /* Breedte van de afbeelding */
+  margin: 0;
+}
+
+
+.go {
+  margin: 10px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #565656;
+  color: rgb(51, 51, 51);
+  padding: 8px 12px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 16px;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0px 3px rgba(0, 0, 0, 0.2);
+}
+
+
+.go:hover {
+  color: rgb(31, 31, 31);
+  background-color: #464646
+}
+
+.go:active{
+  box-shadow: 0 1px #565656;
+  transform: translateY(2px);
+}
+
+
+
+
+
+a{
+  margin: 10px 20px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #565656;
+  color: rgb(51, 51, 51);
+  padding: 8px 12px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 16px;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0px 3px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(235, 235, 235);
+  background-color: #464646
+}
+
+a:active{
+  box-shadow: 0 1px #565656;
+  transform: translateY(2px);
+}
+
+
+input{
+  margin: 10px 20px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #565656;
+  color: #fff;
+  padding: 8px 12px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 16px;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0px 3px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  width: 100px;
+}
+
+.button-send{
+  margin: 10px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #565656;
+  color: rgb(51, 51, 51);
+  padding: 8px 12px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 16px;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0px 3px rgba(0, 0, 0, 0.2);
+}
+
+
+.button-send:hover {
+  color: rgb(31, 31, 31);
+  background-color: #464646
+}
+
+.button-send:active{
+  box-shadow: 0 1px #565656;
+  transform: translateY(2px);
+}
+
+.nickname{
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #fff;
+} 
+
+
+.question-mark {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #565656;
+  color: rgb(51, 51, 51);
+  padding: 8px 12px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 16px;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0px 3px rgba(0, 0, 0, 0.2);
+}
+
+.question-mark:hover {
+  color: rgb(235, 235, 235);
+  background-color: #464646
+}
+
+.question-mark:active{
+  box-shadow: 0 1px #565656;
+  transform: translateY(2px);
+}
+
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 50px;
+  right: 65px;
+  background-color: #565656;
+  color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  width: 370px;
+  padding: 20px;
+  max-width: 370px;
+}
+
+.popup:hover {
+  color: rgb(235, 235, 235);
+  background-color: #464646
+}
+
+
+.close-btn {
+  cursor: pointer;
+  background: none;
+  border: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}

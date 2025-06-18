@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Memory Card</title>
+    <link rel="icon" type="image/x-icon" href="/Ikbal/img/favicon2.ico">
+</head>
+
+<body>
+    <div>
+        <div class="home">
+            <a href="/index.html"><img class="homebutton" src="img/home (1).png" alt="home" width="30px" height="30px"></a>
+        </div>
+
+        <div class="question">
+            <img class="questionbutton" src="img/question.png" alt="question" width="30px" height="30px">
+        </div>
+
+        <div class="popup">
+            <div class="popup-content">
+                <img class="close-btn" src="/Ikbal/img/cancel.png" alt="" width="20px" height="20px">
+                <h3>🃏 Memory Card 🃏</h3>
+                <hr>
+                <h3>Doel:</h3>
+                <p>Vind alle kaartparen en scoor meer punten dan de andere speler.</p>
+                
+                <h3>Spelregels:</h3>
+                <p>Het spel is voor 2 spelers.</p>
+                <p>Alle kaarten liggen gesloten op tafel. Elke kaart heeft een match.</p>
+                <p>Speler 1 draait twee kaarten om.</p>
+                <p>Als de kaarten hetzelfde zijn:</p>
+                <p>- Krijgt de speler 1 punt.</p>
+                <p>- Mag de speler nog een keer.</p>
+                <p>Als de kaarten niet hetzelfde zijn:</p>
+                <p>- Worden de kaarten weer gesloten.</p>
+                <p>- Is speler 2 aan de beurt.</p>
+                <p>Het spel gaat door totdat alle paren zijn gevonden.</p>
+                <p>De speler met de meeste punten wint.</p>
+                
+                <h3>Tips:</h3>
+                <p>Probeer te onthouden waar de kaarten liggen.</p>
+                <p>Speel eerlijk en wacht op je beurt.</p>
+            </div>
+        </div>
+        <h1>Memory Card Rizzlers</h1>
+
+        <div class="nickinput">
+
+            <div class="nickinput1">
+                <section class="nicknamesc">
+                    <label class="nickname" for="nickname">Player 1:</label>
+                    <input type="text" id="nickname" class="input-nickname">
+                    <button class="button-send">Send</button>
+                </section>
+            </div>
+
+            <div class="nickinput2">
+                <section class="nicknamesc2">
+                    <label class="nickname2" for="nickname2">Player 2:</label>
+                    <input type="text" id="nickname2" class="input-nickname2">
+                    <button class="button-send2">Send</button>
+                </section>
+            </div>
+        </div>
+
+        <div class="game-container">
+            <div class="scoreboard">
+                <p class="player1">Player 1 Score: <span class="player1-score">0</span></p>
+                <p class="player2">Player 2 Score: <span class="player2-score">0</span></p>
+                <p class="moves">Moves: <span class="move-counter">0</span></p>
+            </div>
+        </div>
+
+        <div class="grid-container">
+            <div id="chrome" class="card"><img src="img/logo2.jpg" alt=""></div>
+            <div id="chrome2" class="card"><img src="img/logo2.jpg" alt=""></div>
+            <div id="google" class="card"><img src="img/logo2.jpg" alt=""></div>
+            <div id="google2" class="card"><img src="img/logo2.jpg" alt=""></div>
+            <div id="safari" class="card"><img src="img/logo2.jpg" alt=""></div>
+            <div id="safari2" class="card"><img src="img/logo2.jpg" alt=""></div>
+            <div id="yahooi" class="card"><img src="img/logo2.jpg" alt=""></div>
+            <div id="yahooi2" class="card"><img src="img/logo2.jpg" alt=""></div>
+            <div id="bing" class="card"><img src="img/logo2.jpg" alt=""></div>
+            <div id="bing2" class="card"><img src="img/logo2.jpg" alt=""></div>
+            <div id="firefox" class="card"><img src="img/logo2.jpg" alt=""></div>
+            <div id="firefox2" class="card"><img src="img/logo2.jpg" alt=""></div>
+            <div id="opera" class="card"><img src="img/logo2.jpg" alt=""></div>
+            <div id="opera2" class="card"><img src="img/logo2.jpg" alt=""></div>
+            <div id="edge" class="card"><img src="img/logo2.jpg" alt=""></div>
+            <div id="edge2" class="card"><img src="img/logo2.jpg" alt=""></div>
+        </div>
+        <button class="reset-button">Reset</button>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
