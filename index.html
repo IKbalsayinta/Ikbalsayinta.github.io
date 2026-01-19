@@ -1,97 +1,1405 @@
 <!DOCTYPE html>
 <html lang="nl">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio Ikbal</title>
+    <title>Ikbal Sayinta | Software Developer</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #7c3aed;
+            --dark-color: #0f172a;
+            --light-color: #f8fafc;
+            --gray-color: #64748b;
+            --success-color: #10b981;
+            --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: sans-serif;
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+            line-height: 1.7;
+            overflow-x: hidden;
         }
-
-        .icons {
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .mono-font {
+            font-family: 'Roboto Mono', monospace;
+        }
+        
+        /* Animatie achtergrond */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, rgba(37, 99, 235, 0.1), rgba(124, 58, 237, 0.1));
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .circle-2 {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 5s;
+        }
+        
+        .circle-3 {
+            width: 150px;
+            height: 150px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 10s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        /* Navbar */
+        .navbar {
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 1.2rem 0;
+            transition: var(--transition);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            border-bottom: 3px solid transparent;
+            background-image: linear-gradient(90deg, rgba(37, 99, 235, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+        }
+        
+        .navbar.scrolled {
+            padding: 0.8rem 0;
+            border-bottom: 3px solid var(--primary-color);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: white !important;
+            letter-spacing: -0.5px;
+        }
+        
+        .navbar-brand span {
+            color: var(--primary-color);
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.85) !important;
+            font-weight: 500;
+            margin: 0 0.3rem;
+            padding: 0.7rem 1.2rem !important;
+            border-radius: 8px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::before, .nav-link.active::before {
+            width: 80%;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: white !important;
+            transform: translateY(-3px);
+        }
+        
+        .social-icons .nav-link {
+            padding: 0.8rem !important;
+            margin: 0 0.2rem;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .social-icons .nav-link:hover {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            transform: translateY(-5px) rotate(5deg);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+        
+        /* Hero Sectie */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding-top: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.15) 0%, transparent 50%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(90deg, #60a5fa, #a78bfa, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: gradient 3s ease infinite;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: #cbd5e1;
+            margin-bottom: 1.8rem;
+            font-weight: 500;
+        }
+        
+        .hero-text {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            max-width: 650px;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+        
+        /* YUVARLAK PROFİL FOTOĞRAFI - DÜZELTİLDİ */
+        .profile-image-container {
+            position: relative;
+            display: inline-block;
+            width: 400px;
+            height: 400px;
+        }
+        
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            border: 8px solid transparent;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)) border-box;
+            position: relative;
+            z-index: 2;
+            transition: var(--transition);
+        }
+        
+        .profile-image:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+        }
+        
+        .profile-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 110%;
+            height: 110%;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.4;
+            z-index: 1;
+            animation: pulse 4s infinite ease-in-out;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.7; }
+        }
+        
+        /* Knoppen - DÜZELTİLDİ (Neem Contact Op butonu) */
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            color: white;
+            padding: 1rem 2.5rem;
+            font-weight: 600;
+            border-radius: 12px;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary-custom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn-primary-custom:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary-custom:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 30px rgba(37, 99, 235, 0.4);
+        }
+        
+        .btn-outline-custom {
+            border: 2px solid var(--primary-color);
+            background: transparent;
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            font-weight: 600;
+            border-radius: 12px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-outline-custom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            transition: var(--transition);
+            z-index: -1;
+        }
+        
+        .btn-outline-custom:hover {
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(37, 99, 235, 0.2);
+        }
+        
+        .btn-outline-custom:hover::before {
+            width: 100%;
+        }
+        
+        /* Sectie Stijlen */
+        .section {
+            padding: 8rem 0;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+        }
+        
+        .section-subtitle {
+            color: var(--gray-color);
+            font-size: 1.3rem;
+            max-width: 750px;
+            margin-bottom: 4rem;
+            line-height: 1.7;
+        }
+        
+        /* Over Mij Sectie */
+        .skill-bar {
+            margin-bottom: 2rem;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .skill-bar-outer {
+            height: 12px;
+            background-color: #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 6px;
+            transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .language-badge {
+            background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
+            color: var(--primary-color);
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-block;
+            margin: 0.5rem;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .language-badge:hover {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 25px rgba(37, 99, 235, 0.2);
+        }
+        
+        /* Hobby's & Interesses */
+        .hobby-item {
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            text-align: center;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+        }
+        
+        .hobby-item::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border-radius: 22px;
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .hobby-item:hover::before {
+            opacity: 1;
+        }
+        
+        .hobby-item:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .hobby-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+        
+        .hobby-item:hover .hobby-icon {
+            transform: rotate(15deg) scale(1.1);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+        
+        /* Project Cards - DÜZELTİLDİ (Üstteki çizgi kaldırıldı) */
+        .project-card {
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            background: white;
+            position: relative;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 40px 60px rgba(0, 0, 0, 0.2);
+        }
+        
+        .project-image {
+            height: 220px;
+            object-fit: cover;
+            width: 100%;
+            transition: var(--transition);
+        }
+        
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+        
+        .project-card-body {
+            padding: 2rem;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-top: 1.5rem;
+        }
+        
+        .tech-badge {
+            background: #f1f5f9;
+            color: var(--gray-color);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .tech-badge:hover {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+        
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 10px;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -3.5rem;
+            top: 2.5rem;
             width: 20px;
-            filter: invert(80%);
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: 5px solid white;
+            box-shadow: 0 0 0 4px var(--primary-color);
+            z-index: 2;
         }
-
-        .icons:hover {
-            filter: invert(100%);
+        
+        .timeline-date {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: rgba(37, 99, 235, 0.1);
+            border-radius: 20px;
+        }
+        
+        /* Contact Sectie - DÜZELTİLDİ (E-mail taşması) */
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 2px solid transparent;
+            height: 100%;
+            min-height: 160px;
+        }
+        
+        .contact-info-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-color);
+        }
+        
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 2rem;
+            color: white;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+        
+        .contact-info-item:hover .contact-icon {
+            transform: rotate(15deg) scale(1.1);
+        }
+        
+        .contact-info-content {
+            flex: 1;
+            min-width: 0; /* Bu satır eklendi - taşmayı engeller */
+        }
+        
+        .contact-info-content h5 {
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .contact-info-content p {
+            color: var(--gray-color);
+            word-break: break-all; /* Uzun e-mail adresleri için */
+            overflow-wrap: break-word;
+        }
+        
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--dark-color), #1e293b);
+            color: white;
+            padding: 4rem 0 2rem;
+            margin-top: 8rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .footer a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .footer a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .footer a:hover {
+            color: white;
+        }
+        
+        .footer a:hover::after {
+            width: 100%;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        
+        /* Responsive Stijlen */
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .profile-image-container {
+                width: 350px;
+                height: 350px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .section {
+                padding: 6rem 0;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .profile-image-container {
+                width: 300px;
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .navbar-collapse {
+                background: rgba(15, 23, 42, 0.98);
+                backdrop-filter: blur(20px);
+                padding: 2rem;
+                border-radius: 20px;
+                margin-top: 1rem;
+                box-shadow: var(--shadow);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .contact-info-item {
+                flex-direction: column;
+                text-align: center;
+                min-height: auto;
+            }
+            
+            .contact-icon {
+                margin-right: 0;
+                margin-bottom: 1.5rem;
+            }
+            
+            .profile-image-container {
+                width: 250px;
+                height: 250px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .btn-primary-custom, .btn-outline-custom {
+                padding: 0.8rem 2rem;
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+            
+            .profile-image-container {
+                width: 220px;
+                height: 220px;
+            }
         }
     </style>
 </head>
-
 <body>
-    <!-- Navigatiebalk -->
-    <header class="bg-dark bg-gradient rounded-bottom text-light py-4 mx-5">
-        <div class="container d-flex justify-content-between">
-            <ul class="nav">
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-light">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="aboutme.html" class="nav-link text-light">Over Mij</a>
-                </li>
-                <li class="nav-item">
-                    <a href="projecten.html" class="nav-link text-light">Projecten</a>
-                </li>
-                <li class="nav-item">
-                    <a href="contact.html" class="nav-link text-light">Contact</a>
-                </li>
-            </ul>
-            <ul class="nav">
-                <!-- Social media iconen -->
-                <li class="nav-item">
-                    <a href="https://www.linkedin.com" class="nav-link text-light"><img class="icons"
-                            src="img/linkedin.png" alt="LinkedIn" width="24" /></a>
-                </li>
-                <li class="nav-item">
-                    <a href="https://www.facebook.com" class="nav-link text-light"><img class="icons"
-                            src="img/facebook-app-symbol.png" alt="Facebook" width="24" /></a>
-                </li>
-                <li class="nav-item">
-                    <a href="https://www.instagram.com" class="nav-link text-light"><img class="icons"
-                            src="img/instagram.png" alt="Instagram" width="24" /></a>
-                </li>
-                <li class="nav-item">
-                    <a href="https://twitter.com" class="nav-link text-light"><img class="icons" src="img/twitter.png"
-                            alt="Twitter" width="24" /></a>
-                </li>
-            </ul>
-        </div>
-    </header>
+    <!-- Achtergrond animatie -->
+    <div class="bg-animation">
+        <div class="bg-circle circle-1"></div>
+        <div class="bg-circle circle-2"></div>
+        <div class="bg-circle circle-3"></div>
+    </div>
 
-    <!-- Hoofdpagina inhoud -->
-    <main class="container py-5">
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <!-- Afbeelding -->
-                <img class="img-fluid" src="img/ikbal.png" alt="Ikbal" />
-            </div>
-            <div class="col-md-6">
-                <h4>Welkom op mijn portfolio website!</h4>
-                <hr />
-                <p>
-                    Hallo! Ik ben Ikbal, een student aan ROC Mondriaan en ik volg de
-                    opleiding Softwareontwikkeling. Mijn passie ligt bij technologie en
-                    softwareontwikkeling. Ik leer graag nieuwe vaardigheden om mijn
-                    carrière verder te ontwikkelen.
-                </p>
-                <p>
-                    Op deze website vind je meer over mij: mijn projecten, opleiding,
-                    vaardigheden en professionele groei.
-                </p>
-                <p>Neem gerust contact met mij op!</p>
+    <!-- Navigatie -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Ikbal<span>.</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Over Mij</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Vaardigheden</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projecten</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">Ervaring</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav social-icons ms-lg-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </main>
+    </nav>
 
-    <!-- Footer  -->
-    <footer class="bg-dark bg-gradient text-light text-center py-3 mt-5">
-        <!-- Footer inhoud -->
-        &copy; 2025 Ikbal Sayinta
+    <!-- Hero Sectie -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content fade-in-up">
+                    <h3 class="mono-font" style="color: #60a5fa;">Hallo, mijn naam is</h3>
+                    <h1 class="hero-title">Ikbal Sayinta</h1>
+                    <h2 class="hero-subtitle">Software Developer & ICT Student</h2>
+                    <p class="hero-text">
+                        Een gepassioneerde 19-jarige software developer in opleiding bij ROC Mondriaan. 
+                        Ik creëer innovatieve digitale oplossingen met moderne technologieën en ben voortdurend 
+                        op zoek naar nieuwe uitdagingen om mijn expertise te vergroten.
+                    </p>
+                    <div class="d-flex flex-wrap gap-4 mt-5">
+                        <a href="#projects" class="btn btn-primary-custom">Bekijk Mijn Projecten</a>
+                        <a href="#contact" class="btn btn-outline-custom">Neem Contact Op</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center mt-5 mt-lg-0 fade-in-up delay-1">
+                    <div class="profile-image-container">
+                        <div class="profile-glow"></div>
+                        <img src="img/ikbal.png" alt="Ikbal Sayinta" class="profile-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Over Mij Sectie -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="section-title">Over Mij</h2>
+                    <p class="section-subtitle">
+                        Een ambitieuze software developer met een passie voor technologie en innovatie.
+                    </p>
+                    <p class="mb-4">
+                        Als 19-jarige student Software Development bij ROC Mondriaan ben ik voortdurend bezig met het verbeteren van mijn vaardigheden in webontwikkeling en software engineering. Mijn achtergrond uit Turkije heeft me een uniek perspectief gegeven op probleemoplossing en teamwork.
+                    </p>
+                    <p class="mb-5">
+                        Buiten programmeren houd ik van sporten, tijd doorbrengen met vrienden en werken aan scooters. Deze hobby's helpen me om creatief te blijven en een goede balans te vinden tussen werk en privéleven.
+                    </p>
+                    
+                    <div class="mb-5">
+                        <h4 class="mb-4">Talen</h4>
+                        <div>
+                            <span class="language-badge">Turks (100%)</span>
+                            <span class="language-badge">Nederlands (80%)</span>
+                            <span class="language-badge">Engels (60%)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-5 mt-lg-0">
+                    <h4 class="mb-4">Hobby's & Interesses</h4>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="hobby-item">
+                                <div class="hobby-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <h5>Programmeren</h5>
+                                <p class="mb-0">Nieuwe technologieën leren en toepassen</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="hobby-item">
+                                <div class="hobby-icon">
+                                    <i class="fas fa-dumbbell"></i>
+                                </div>
+                                <h5>Gym</h5>
+                                <p class="mb-0">Fysiek en mentaal fit blijven</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="hobby-item">
+                                <div class="hobby-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h5>Socializen</h5>
+                                <p class="mb-0">Uitgaan met vrienden</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="hobby-item">
+                                <div class="hobby-icon">
+                                    <i class="fas fa-futbol"></i>
+                                </div>
+                                <h5>Voetbal</h5>
+                                <p class="mb-0">Teamwork en strategie</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vaardigheden Sectie -->
+    <section id="skills" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title text-center">Mijn Vaardigheden</h2>
+            <p class="section-subtitle text-center mx-auto">
+                Technologieën en tools waar ik uitgebreide ervaring mee heb opgedaan
+            </p>
+            
+            <div class="row mt-5">
+                <div class="col-lg-6">
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>HTML/CSS</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar-outer">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>JavaScript</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar-outer">
+                            <div class="skill-progress" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>PHP</span>
+                            <span>65%</span>
+                        </div>
+                        <div class="skill-bar-outer">
+                            <div class="skill-progress" style="width: 65%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>Symfony</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar-outer">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 mt-4 mt-lg-0">
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>Bootstrap</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar-outer">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>Tailwind CSS</span>
+                            <span>60%</span>
+                        </div>
+                        <div class="skill-bar-outer">
+                            <div class="skill-progress" style="width: 60%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>Next.js</span>
+                            <span>50%</span>
+                        </div>
+                        <div class="skill-bar-outer">
+                            <div class="skill-progress" style="width: 50%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>Linux</span>
+                            <span>45%</span>
+                        </div>
+                        <div class="skill-bar-outer">
+                            <div class="skill-progress" style="width: 45%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projecten Sectie -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title text-center">Mijn Projecten</h2>
+            <p class="section-subtitle text-center mx-auto">
+                Enkele projecten die ik tijdens mijn opleiding en vrije tijd heb ontwikkeld
+            </p>
+            
+            <div class="row mt-5">
+                <div class="col-lg-4 col-md-6 mb-4 fade-in-up">
+                    <div class="project-card">
+                        <img src="img/hogerlager.png" alt="Hoger Lager Spel" class="project-image">
+                        <div class="project-card-body">
+                            <h4>Hoger Lager Spel</h4>
+                            <p class="text-muted mb-3">Een interactief spel gemaakt met HTML, CSS en JavaScript waar spelers moeten raden of het volgende getal hoger of lager is.</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">HTML</span>
+                                <span class="tech-badge">CSS</span>
+                                <span class="tech-badge">JavaScript</span>
+                            </div>
+                            <a href="Hoger-Lager/Mijn-H-L/mijnhl.html" class="btn btn-primary-custom mt-4">Bekijk Project</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4 fade-in-up delay-1">
+                    <div class="project-card">
+                        <img src="img/logo2.jpg" alt="Memory Spel" class="project-image">
+                        <div class="project-card-body">
+                            <h4>Memory Spel</h4>
+                            <p class="text-muted mb-3">Een uitdagend memoryspel ontwikkeld met moderne webtechnologieën om het geheugen te trainen.</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">HTML</span>
+                                <span class="tech-badge">CSS</span>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">GitHub</span>
+                            </div>
+                            <a href="Memory/index.html" class="btn btn-primary-custom mt-4">Bekijk Project</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4 fade-in-up delay-2">
+                    <div class="project-card">
+                        <img src="img/bliksem.jpg" alt="Auto Review Website" class="project-image">
+                        <div class="project-card-body">
+                            <h4>Auto Review Website</h4>
+                            <p class="text-muted mb-3">Samen met mijn team heb ik een volledige website gebouwd waar gebruikers auto-ervaringen kunnen delen en recensies kunnen plaatsen.</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">HTML</span>
+                                <span class="tech-badge">CSS</span>
+                                <span class="tech-badge">PHP</span>
+                                <span class="tech-badge">MySQL</span>
+                            </div>
+                            <a href="https://github.com/orgs/ROCMondriaanTIN/teams/bliksem-cars" target="_blank" class="btn btn-primary-custom mt-4">Bekijk op GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ervaring & Onderwijs -->
+    <section id="experience" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title text-center">Onderwijs & Werkervaring</h2>
+            <p class="section-subtitle text-center mx-auto">
+                Mijn academische achtergrond en professionele ervaring
+            </p>
+            
+            <div class="row mt-5">
+                <div class="col-lg-6">
+                    <h4 class="mb-4">Onderwijs</h4>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">08/2024 – Heden</div>
+                            <h4>MBO Niveau 4 Software Developer</h4>
+                            <p class="mb-2"><strong>ROC Mondriaan Brasserskade</strong></p>
+                            <p class="text-muted mb-3">Delft, Nederland</p>
+                            <p>Tijdens mijn opleiding werk ik met verschillende programmeertalen en technologieën, zoals HTML, CSS, JavaScript, PHP, Symfony en Next.js. Ik gebruik frameworks zoals Bootstrap en Tailwind CSS en werk met databases via phpMyAdmin.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 mt-5 mt-lg-0">
+                    <h4 class="mb-4">Werkervaring</h4>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">03/2025 – 10/2025</div>
+                            <h4>Bezorger (fiets & auto)</h4>
+                            <p class="mb-2"><strong>New York Pizza</strong></p>
+                            <p class="text-muted mb-3">'s-Gravenzande, Nederland</p>
+                            <p>Verantwoordelijk voor het bezorgen van bestellingen met zowel de fiets als met de auto. Werkte vaak onder tijdsdruk en leerde hierdoor om efficiënt te werken en mijn tijd goed in te delen.</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date">02/2023 – 03/2025</div>
+                            <h4>Winkelmedewerker</h4>
+                            <p class="mb-2"><strong>PLUS Supermarkt (voorheen COOP)</strong></p>
+                            <p class="text-muted mb-3">Den Haag, Nederland</p>
+                            <p>Gewerkt op verschillende afdelingen zoals kassa, vakkenvullen, AGF en de slagerij. Door deze ervaring heb ik geleerd om goed samen te werken, verantwoordelijk te zijn en gestructureerd te werken.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Sectie -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title text-center">Contact</h2>
+            <p class="section-subtitle text-center mx-auto">
+                Neem vrijblijvend contact met mij op voor samenwerkingen of vragen
+            </p>
+            
+            <div class="row justify-content-center mt-5">
+                <div class="col-lg-10">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-3 mb-4">
+                            <div class="contact-info-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-info-content">
+                                    <h5>E-mail</h5>
+                                    <p class="mb-0">ikbalsynt38@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-3 mb-4">
+                            <div class="contact-info-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-info-content">
+                                    <h5>Telefoon</h5>
+                                    <p class="mb-0">+31 6 687698452</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-3 mb-4">
+                            <div class="contact-info-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-info-content">
+                                    <h5>Locatie</h5>
+                                    <p class="mb-0">Rijswijk, Nederland</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-3 mb-4">
+                            <div class="contact-info-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div class="contact-info-content">
+                                    <h5>Opleiding</h5>
+                                    <p class="mb-0">ROC Mondriaan, Delft</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-5 pt-4">
+                        <p class="mb-4" style="font-size: 1.2rem;">Ik sta open voor stageplekken en nieuwe uitdagingen!</p>
+                        <a href="mailto:ikbalsynt38@gmail.com" class="btn btn-primary-custom btn-lg px-5">Stuur een e-mail</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
+                    <h3 class="mb-3">Ikbal Sayinta</h3>
+                    <p class="mb-0" style="color: #cbd5e1;">Software Developer & ICT Student</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-2">&copy; 2025 Ikbal Sayinta. Alle rechten voorbehouden.</p>
+                    <p class="mb-0" style="color: #94a3b8;">ROC Mondriaan | Software Development</p>
+                </div>
+            </div>
+        </div>
     </footer>
-</body>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Aangepaste JavaScript -->
+    <script>
+        // Smooth scrolling voor navigatielinks
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update actieve nav link
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // Animateer skill bars bij scrollen
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 300);
+            });
+        }
+        
+        // Intersection Observer voor animaties
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    if(entry.target.id === 'skills') {
+                        animateSkillBars();
+                    }
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+        
+        // Observeer secties
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if(window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            // Update actieve nav link gebaseerd op scrollpositie
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if(scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Achtergrond animatie voor elementen
+        const elements = document.querySelectorAll('.fade-in-up');
+        elements.forEach((el, index) => {
+            el.style.animationDelay = `${index * 0.2}s`;
+        });
+        
+        // Hover effecten voor hobby items
+        const hobbyItems = document.querySelectorAll('.hobby-item');
+        hobbyItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.03)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate elements on page load
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in-up').forEach(el => {
+                    if(isElementInViewport(el)) {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }
+                });
+            }, 300);
+        });
+        
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+    </script>
+</body>
 </html>
